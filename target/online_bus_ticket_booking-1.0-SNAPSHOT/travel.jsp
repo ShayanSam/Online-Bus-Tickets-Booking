@@ -6,12 +6,11 @@
 
 <html>
 <body>
-<h2>نتایج جستجو</h2>
+<h2> Search Result</h2>
 <hr>
 <br/>
 
 <table border="1">
-
     <tr>
         <th>Travel Id</th>
         <th>Travel From</th>
@@ -21,21 +20,20 @@
     </tr>
 
     <c:forEach var="tempTravel" items="${travelList}">
-        <tr>
         <form action="TicketControllerServlet" method="get">
+        <tr>
             <td>${tempTravel.travelId}</td>
             <td>${tempTravel.travelFrom}</td>
             <td>${tempTravel.travelTo}</td>
             <td>${tempTravel.date}</td>
             <td>${tempTravel.time}</td>
-            <input type="hidden" name="travelId" value="${tempTravel.id}" />
-            <td><button type="submit" value="buy"/>Buy</td>
+            <td><button type="submit" name="travelId" value="${tempTravel.id}"/>Buy</td>
         </tr>
-</table>
     </c:forEach>
+        </form>
+</table>
             <%
                  session.setAttribute("userN",session.getAttribute("username"));
             %>
-        </form>
 </body>
 </html>

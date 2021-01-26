@@ -3,6 +3,7 @@ package com.maktab.online_bus_ticket_booking.controller;
 import com.maktab.online_bus_ticket_booking.dao.TicketUtil;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet("/TicketControllerServlet")
 public class TicketControllerServlet extends HttpServlet {
@@ -32,10 +34,22 @@ public class TicketControllerServlet extends HttpServlet {
         TicketUtil ticketUtil = new TicketUtil(dataSource);
         try {
             int userID1 = ticketUtil.findUserId(userId);
-           ticketUtil.addTicket(userID1, travelId);
+            ticketUtil.addTicket(userID1, travelId);
+//            List<Object[]> purchasedList = ticketUtil.ticketsPurchased(userID1);
+            HttpSession session1 = request.getSession();
+//            session1.setAttribute("pList",purchasedList);
+            session1.setAttribute("userID",userID1);
+            RequestDispatcher dispatch = request.getRequestDispatcher("purchased.jsp");
+            dispatch.forward(request,response);
         } catch (Exception exception) {
             exception.printStackTrace();
-            out.println("something went wrong!!");
+//            RequestDispatcher dispatch = request.getRequestDispatcher("TravelcontrollerServlet");
+//            dispatch.forward(request,response);
+            out.println("<html><body>");
+            out.println("<h3>something went wrong!!<h3>");
+//            out.println("<a href=\\\"travel.html\\\">go back</a>\"");
+            out.println("</html></body>");
+
         }
     }
 }

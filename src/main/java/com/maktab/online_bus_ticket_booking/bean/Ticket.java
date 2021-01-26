@@ -6,13 +6,6 @@ public class Ticket {
     private Travel travel;
     private Integer id;
 
-
-    public Ticket(User user, Travel travel, Integer id) {
-        this.user = user;
-        this.travel = travel;
-        this.id = id;
-    }
-
     public User getUser() {
         return user;
     }
