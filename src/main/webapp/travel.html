@@ -1,81 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xml:lang="ar">
+
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="travel.css">
+</head>
 
-    </head>
 <body>
-<h3> Travel Search</h3>
-<form action="TravelcontrollerServlet" method="get">
-Travel From <select name="travel_from">
-    <option value="mashad">Mashhad</option>
-    <option value="tehran">tehran</option>
-    <option value="shiraz">shiraz</option>
-    <option value="kerman">kerman</option>
-</select>
-<br/><br/>
-Travel To <select name="travel_to">
-    <option value="mashad">Mashhad</option>
-    <option value="tehran">tehran</option>
-    <option value="shiraz">shiraz</option>
-    <option value="kerman">kerman</option>
-</select>
-<br/><br/>
-<select name="day">
-    <option>- Day -</option>
-    <option value="01">01</option>
-    <option value="02">02</option>
-    <option value="03">03</option>
-    <option value="04">04</option>
-    <option value="05">05</option>
-    <option value="06">06</option>
-    <option value="07">07</option>
-    <option value="08">08</option>
-    <option value="09">09</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-    <option value="12">12</option>
-    <option value="13">13</option>
-    <option value="14">14</option>
-    <option value="15">15</option>
-    <option value="16">16</option>
-    <option value="17">17</option>
-    <option value="18">18</option>
-    <option value="19">19</option>
-    <option value="20">20</option>
-    <option value="21">21</option>
-    <option value="22">22</option>
-    <option value="23">23</option>
-    <option value="24">24</option>
-    <option value="25">25</option>
-    <option value="26">26</option>
-    <option value="27">27</option>
-    <option value="28">28</option>
-    <option value="29">29</option>
-    <option value="30">30</option>
-    <option value="31">31</option>
-</select><select name="month">
-    <option>- Month -</option>
-    <option value="01">01</option>
-    <option value="02">02</option>
-    <option value="03">03</option>
-    <option value="04">04</option>
-    <option value="05">05</option>
-    <option value="06">06</option>
-    <option value="07">07</option>
-    <option value="08">08</option>
-    <option value="09">09</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-    <option value="12">12</option>
-</select>
-<select name="year">
-    <option>- Year -</option>
-    <option value="1398">1398</option>
-    <option value="1399">1399</option>
-    <option value="1400">1400</option>
-</select>
-<button type="submit" value="Search"/>
+<br />
+<form action="TravelcontrollerServlet" method="get" class="myform">
+    <div class="bar">
+        <label style="float:right;text-align:right;margin-right:-30px;">مبدا</label>
+        <select name="travel_from" id="day" style="min-height:10px;min-width:100px;">
+            <option value="مشهد">مشهد</option>
+            <option value="تهران">تهران</option>
+            <option value="شیراز">شیراز</option>
+            <option value="کرمان">کرمان</option>
+        </select>
+        <br /><br />
+
+        <label for="day" style="float:right;text-align:right;margin-right:-30px;">مقصد</label>
+        <select name="travel_to" style="min-height:10px;min-width:100px;">
+            <option value="مشهد">مشهد</option>
+            <option value="تهران">تهران</option>
+            <option value="شیراز">شیراز</option>
+            <option value="کرمان">کرمان</option>
+        </select>
+        <br /><br />
+        <label for="day" style="float:right;text-align:right;margin-right:-30px;">تاریخ</label>
+        <select name="year" style="min-height:10px;min-width:10px;">
+            <option>- سال -</option>
+            <option value="1398">۱۳۹۸</option>
+            <option value="1399">۱۳۹۹</option>
+            <option value="1400">۱۴۰۰</option>
+        </select>
+        <select name="month" style="min-height:10px;min-width:10px;">
+            <option>- ماه -</option>
+            <option value="01">۰۱</option>
+            <option value="02">۰۲</option>
+            <option value="03">۰۳</option>
+            <option value="04">۰۴</option>
+            <option value="05">۰۵</option>
+            <option value="06">۰۶</option>
+            <option value="07">۰۷</option>
+            <option value="08">۰۸</option>
+            <option value="09">۰۹</option>
+            <option value="10">۱۰</option>
+            <option value="11">۱</option>
+            <option value="12">۱۲</option>
+        </select>
+        <select name="day" style="min-height:10px;min-width:10px;">
+            <option>- روز -</option>
+            <option value="01">۰۱</option>
+            <option value="02">۰۲</option>
+            <option value="03">۰۳</option>
+            <option value="04">۰۴</option>
+            <option value="05">۰۵</option>
+            <option value="06">۰۶</option>
+            <option value="07">۰۷</option>
+            <option value="08">۰۸</option>
+            <option value="09">۰۹</option>
+            <option value="10">۱۰</option>
+            <option value="11">۱</option>
+            <option value="12">۱۲</option>
+            <option value="13">۱۳</option>
+            <option value="14">۱۴</option>
+            <option value="15">۱۵</option>
+            <option value="16">۱۶</option>
+            <option value="17">۱۷</option>
+            <option value="18">۱۸</option>
+            <option value="19">۱۹</option>
+            <option value="20">۲۰</option>
+            <option value="21">۲۱</option>
+            <option value="22">۲۲</option>
+            <option value="23">۲۳</option>
+            <option value="24">۲۴</option>
+            <option value="25">۲۵</option>
+            <option value="26">۲۶</option>
+            <option value="27">۲۷</option>
+            <option value="28">۲۸</option>
+            <option value="29">۲۹</option>
+            <option value="30">۳۰</option>
+            <option value="31">۳۱</option>
+        </select>
+
+        <br /><br />
+    </div>
+<br /><br /><br /><br /><br /><br /><br /><br />
+<button type="submit" value="Search" style="float:right;text-align:right;margin-right: -100px;">جستجو</button>
 </form>
+<form action="ShowTicketsControllerServlet" method="get">
+    <br />
+    <button type="submit" value="Search" style="float:right;text-align:right;margin-right: 100px;">بلیط های
+        من</button>
+    <br /><br />
+    <a href="index.jsp" style="float:right;text-align:right;margin-right: 100px;">خروج</a>
+</form>
+
 </body>
+
 </html>

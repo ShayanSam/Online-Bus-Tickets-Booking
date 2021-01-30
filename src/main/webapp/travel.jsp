@@ -1,22 +1,26 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 
 <html>
+<head>
+    <link rel="stylesheet" href="tickets.css">
+</head>
 <body>
-<h2> Search Result</h2>
+<h2> نتایج جستجو </h2>
 <hr>
 <br/>
 
 <table border="1">
     <tr>
-        <th>Travel Id</th>
-        <th>Travel From</th>
-        <th>Travel To </th>
-        <th>Date</th>
-        <th>Time</th>
+        <th>شناسه سفر </th>
+        <th>مبدا </th>
+        <th>مقصد </th>
+        <th>تاریخ حرکت</th>
+        <th>زمان حرکت</th>
     </tr>
 
     <c:forEach var="tempTravel" items="${travelList}">
@@ -27,7 +31,7 @@
             <td>${tempTravel.travelTo}</td>
             <td>${tempTravel.date}</td>
             <td>${tempTravel.time}</td>
-            <td><button type="submit" name="travelId" value="${tempTravel.id}"/>Buy</td>
+            <td><button type="submit" name="travelId" value="${tempTravel.id}"/>خرید بلیط</td>
         </tr>
     </c:forEach>
         </form>
@@ -35,5 +39,10 @@
             <%
                  session.setAttribute("userN",session.getAttribute("username"));
             %>
+
+    <br/><br/>
+    <form action="travel.html">
+        <input type="submit" value="بازگشت" />
+    </form>
 </body>
 </html>

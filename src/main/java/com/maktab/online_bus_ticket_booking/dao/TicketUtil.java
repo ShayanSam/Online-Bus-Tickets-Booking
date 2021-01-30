@@ -44,13 +44,9 @@ public class TicketUtil {
     }
 
     public List<Object[]> ticketsPurchased(int userId) throws Exception {
-        Object[] array = new Object[3];
         List<Object[]> list = new ArrayList<>();
-        User user = new User();
-        Travel travel = new Travel();
-        Ticket ticket = new Ticket();
         Connection connection = dataSource.getConnection();
-        PreparedStatement ps = connection.prepareStatement("select * \n" +
+        PreparedStatement ps = connection.prepareStatement("select travel_from,travel_to,date,time,first_name,last_name,t.travel_id,ti.t_id,gender \n" +
                 "from travel t\n" +
                 "join ticket ti on t.id = ti.travel_id\n" +
                 "join user u on u.id = ti.user_id\n" +
@@ -58,7 +54,10 @@ public class TicketUtil {
         ps.setInt(1, userId);
         ResultSet resultSet = ps.executeQuery();
         while (resultSet.next()) {
-            user.setId(resultSet.getInt("id"));
+            Object[] array = new Object[3];
+            User user = new User();
+            Travel travel = new Travel();
+            Ticket ticket = new Ticket();
             user.setFirstName(resultSet.getString("first_name"));
             user.setLastName(resultSet.getString("last_name"));
             user.setGender(resultSet.getString("gender"));
@@ -73,7 +72,22 @@ public class TicketUtil {
             array[2] = ticket;
             list.add(array);
         }
+        resultSet.close();
+        ps.close();
+        connection.close();
         return list;
+    }
+
+    public void deleteTicket(Integer ticketId) throws SQLException {
+
+        Connection connection = dataSource.getConnection();
+        PreparedStatement ps = connection.prepareStatement("delete from ticket where t_id = ?");
+        ps.setInt(1, ticketId);
+        ps.executeUpdate();
+
+        ps.close();
+        connection.close();
+
     }
     }
 

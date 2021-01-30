@@ -1,16 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xml:lang="ar">
+
 <head>
     <meta charset="UTF-8">
-</head>
-<body>
-    <form action="UserControllerServlet" method="post">
-         UserName <input type="text" name="username" />
-        <br/><br/>
-        PassWord <input type="text" name="password" />
-        <br/><br/>
-        <button type="submit" value="Enter" name="login"/>
-    </form>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylelogin.css">
 
+</head>
+
+<body>
+<div class="login">
+    <div class="login-header">
+        <h1>ورود کاربر</h1>
+    </div>
+<form action="UserControllerServlet" method="post">
+    <div class="login-form">
+        <h3 style="float:right;text-align:right;margin-right: 50px;">نام کاربری</h3>
+        <input type="text" placeholder="Username" name="username" /><br>
+        <h3 style="float:right;text-align:right;margin-right: 50px;">پسورد</h3>
+        <input type="password" placeholder="Password" name="password" />
+        <br>
+        <button type="submit" class="login-button" name="login">ورود</button>
+        <br>
+        <a class="sign-up" href="register.html" style="float:right;text-align:right;margin-right: 50px;">ثبت نام</a>
+        <br>
+    </div>
+</form>
+</div>
 </body>
 </html>

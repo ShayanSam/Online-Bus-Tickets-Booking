@@ -1,0 +1,19 @@
+body{
+
+    background-color:orange;
+}
+
+.bar{
+
+    position: absolute;
+    margin-left:100px;
+}
+
+select { text-align-last: right; }
+option { direction: rtl; }
+
+.myform
+{
+    direction: rtl;
+    margin-right: 200px;
+}

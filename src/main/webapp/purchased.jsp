@@ -1,21 +1,21 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: shayan
-  Date: 1/26/2021
-  Time: 10:04 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="delete.css" rel="stylesheet">
 </head>
+
 <body>
-    <h3>Thank You</h3>
-    <form action="ShowTicketsControllerServlet" method="get">
-        <button type="submit" value="See" name="buy"/>
-    </form>
-    <%
-        session.setAttribute("userID",session.getAttribute("userID"));
-    %>
+<br /><br />
+<h2 style="float:right;text-align:right;margin-right:30px;">تراکنش موفق</h2>
+<br /><br />
+<br /><br />
+
+<form action="ShowTicketsControllerServlet" method="get">
+    <button type="submit" value="See" name="buy" style="float:right;text-align:right;margin-right:30px;">بلیط های من</button>
+</form>
+        <% session.setAttribute("userID",session.getAttribute("userID")); %>
 </body>
+
 </html>

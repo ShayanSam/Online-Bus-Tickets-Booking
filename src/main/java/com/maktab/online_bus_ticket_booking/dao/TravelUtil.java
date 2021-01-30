@@ -47,6 +47,8 @@ public class TravelUtil {
             travel1.setTravelId(resultSet.getInt("travel_id"));
             travelList.add(travel1);
         }
+        ps.close();
+        connection.close();
         return travelList;
     }
 

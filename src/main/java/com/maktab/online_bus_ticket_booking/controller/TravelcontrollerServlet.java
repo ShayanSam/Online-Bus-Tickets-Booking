@@ -22,6 +22,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 @WebServlet("/TravelcontrollerServlet")
 public class TravelcontrollerServlet extends HttpServlet {
@@ -31,9 +32,8 @@ public class TravelcontrollerServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        response.setContentType("text/html");
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
         String travelFrom = request.getParameter("travel_from");
         String travelTo = request.getParameter("travel_to");
         String year = request.getParameter("year");
@@ -50,15 +50,13 @@ public class TravelcontrollerServlet extends HttpServlet {
         try {
             List<Travel> travelList = travelUtil.searchTravel(travel);
             if (travelList.size() == 0) {
-                out.println("NO MATCH!");
+                response.sendRedirect("nomatch.html");
             } else {
                 request.setAttribute("travelList", travelList);
-                RequestDispatcher rd = request.getRequestDispatcher("travel.jsp");
-                rd.forward(request, response);
-//                HttpSession session = request.getSession();
-//                session.setAttribute("travelIdList",travelList);
-//                RequestDispatcher dispatch = request.getRequestDispatcher("TicketControllerServlet");
-//                dispatch.forward(request,response);
+                HttpSession session = request.getSession();
+                session.setAttribute("travelIdList",travelList);
+                RequestDispatcher dispatch = request.getRequestDispatcher("travel.jsp");
+                dispatch.forward(request,response);
             }
         } catch (Exception exception) {
             exception.printStackTrace();

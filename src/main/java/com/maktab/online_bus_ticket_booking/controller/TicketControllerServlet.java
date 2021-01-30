@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet("/TicketControllerServlet")
@@ -35,21 +36,13 @@ public class TicketControllerServlet extends HttpServlet {
         try {
             int userID1 = ticketUtil.findUserId(userId);
             ticketUtil.addTicket(userID1, travelId);
-//            List<Object[]> purchasedList = ticketUtil.ticketsPurchased(userID1);
             HttpSession session1 = request.getSession();
-//            session1.setAttribute("pList",purchasedList);
             session1.setAttribute("userID",userID1);
             RequestDispatcher dispatch = request.getRequestDispatcher("purchased.jsp");
             dispatch.forward(request,response);
         } catch (Exception exception) {
             exception.printStackTrace();
-//            RequestDispatcher dispatch = request.getRequestDispatcher("TravelcontrollerServlet");
-//            dispatch.forward(request,response);
-            out.println("<html><body>");
-            out.println("<h3>something went wrong!!<h3>");
-//            out.println("<a href=\\\"travel.html\\\">go back</a>\"");
-            out.println("</html></body>");
-
+            response.sendRedirect("wrong.html");
         }
     }
 }

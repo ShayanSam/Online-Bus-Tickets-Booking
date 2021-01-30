@@ -6,10 +6,7 @@ import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.List;
@@ -20,11 +17,19 @@ public class ShowTicketsControllerServlet extends HttpServlet {
     private DataSource dataSource;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        int iD = 0;
         HttpSession session = req.getSession();
         TicketUtil ticketUtil = new TicketUtil(dataSource);
+            Cookie[] cookies = req.getCookies();
+            for(Cookie cookie : cookies) {
+                if ("userId".equals(cookie.getName())) {
+                    String userId = cookie.getValue();
+                    iD = Integer.parseInt(userId);
+                    break;
+                }
+            }
         try {
-            List<Object[]> purchasedList = ticketUtil.ticketsPurchased((Integer) session.getAttribute("userID"));
+            List<Object[]> purchasedList = ticketUtil.ticketsPurchased((Integer) iD);
             session.setAttribute("pList",purchasedList);
             RequestDispatcher dispatch = req.getRequestDispatcher("tickets.jsp");
             dispatch.forward(req,resp);

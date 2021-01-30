@@ -1,22 +1,20 @@
 body {
-    font-family: "Trebuchet MS", Verdana, sans-serif;
     font-size: 20px;
-    background-color: dimgrey;
-    color: navy;
+    background-color: orange;
+    color:black;
     padding: 3px;
+
+
 }
 
 #main {
-    position: fixed;
+
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 500px;
+    position: absolute;
     top: 50%;
     left: 50%;
-    background-color: dimgrey;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
+    color: rgb(0, 0, 0);
 }
 
-h1 {
-    font-family: Georgia, serif;
-    border-bottom: 3px solid #cc9900;
-    color: #996600;
-    font-size: 30px;
-}

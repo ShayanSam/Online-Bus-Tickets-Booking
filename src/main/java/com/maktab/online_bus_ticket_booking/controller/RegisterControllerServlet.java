@@ -41,9 +41,10 @@ public class RegisterControllerServlet extends HttpServlet {
         UserUtil userUtil = new UserUtil(dataSource);
         try {
             userUtil.addUser(user);
-            response.sendRedirect("login.html");
+            response.sendRedirect("signup.html");
         } catch (Exception exception) {
             exception.printStackTrace();
+            response.sendRedirect("signupwrong.html");
         }
 
     }
